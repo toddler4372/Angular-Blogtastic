@@ -43,7 +43,7 @@ h6, .h6 {
 
 /* Nav links */
 .blog-nav-item {
-  position: relative;
+  /*position: relative;*/
   display: inline-block;
   padding: 10px;
   font-weight: 500;
@@ -161,7 +161,13 @@ h6, .h6 {
   text-align: center;
   background-color: #f9f9f9;
   border-top: 1px solid #e5e5e5;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
 .blog-footer p:last-child {
   margin-bottom: 0;
 }
+
+/* BOOTSTRAP OVERRIDE */
+.modal-dialog {z-index: 9000;}

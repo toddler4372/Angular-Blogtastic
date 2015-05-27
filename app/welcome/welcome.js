@@ -1,28 +1,36 @@
 'use strict';
- 
+
 angular.module('myApp.welcome', ['ngRoute'])
- 
+
 .config(['$routeProvider', function($routeProvider) {
     $routeProvider.when('/welcome', {
         templateUrl: 'welcome/welcome.html',
         controller: 'WelcomeCtrl'
     });
 }])
- 
-.controller('WelcomeCtrl', ['$scope', 'CommonProp', '$firebase', function($scope, CommonProp, $firebase) {
- 	var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles");
-	var sync = $firebase(firebaseObj);
-	$scope.username = CommonProp.getUser();
-	$scope.articles = sync.$asArray();
-	$scope.editPost = function(id) {
-	    var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles/" + id);
-	    var syn = $firebase(firebaseObj);
-	    $scope.postToUpdate = syn.$asObject();
-	    $('#editModal').modal();      // triggers the modal pop up
-	}
-	$scope.update = function() {
+
+.controller('WelcomeCtrl', ['$scope', '$firebase', 'CommonProp', function($scope, $firebase, CommonProp) {
+    $scope.username = CommonProp.getUser();
+    var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles/");
+
+
+    var sync = $firebase(firebaseObj);
+
+    $scope.articles = sync.$asArray();
+    $scope.editPost = function(id) {
+        console.log(id);
+        var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles//" + id);
+
+
+        var syn = $firebase(firebaseObj);
+        $scope.postToUpdate = syn.$asObject();
+
+        $('#editModal').modal();
+    }
+
+    $scope.update = function() {
         console.log($scope.postToUpdate.$id);
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + $scope.postToUpdate.$id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + $scope.postToUpdate.$id);
         var article = $firebase(fb);
         article.$update({
             title: $scope.postToUpdate.title,
@@ -36,15 +44,17 @@ angular.module('myApp.welcome', ['ngRoute'])
         });
 
     }
+
+
     $scope.confirmDelete = function(id) {
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + id);
         var article = $firebase(fb);
         $scope.postToDelete = article.$asObject();
         $('#deleteModal').modal();
     }
 
     $scope.deletePost = function() {
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + $scope.postToDelete.$id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + $scope.postToDelete.$id);
         var article = $firebase(fb);
         article.$remove().then(function(ref) {
             $('#deleteModal').modal('hide');
@@ -52,4 +62,8 @@ angular.module('myApp.welcome', ['ngRoute'])
             console.log("Error:", error);
         });
     }
+
+
+
+
 }]);

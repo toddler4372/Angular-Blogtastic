@@ -1,22 +1,10 @@
 <div ng-controller="AddPostCtrl">
-    <div class="blog-masthead">
-        <div class="container">
-            <nav class="blog-nav">
-                <a class="blog-nav-item " href="#">Home</a>
-                <a class="blog-nav-item active" href="#/addPost">Add Post</a>
- 
-            </nav>
-        </div>
-    </div>
- 
     <div class="container">
- 
         <form class="form-horizontal" ng-submit="AddPost()">
+            <div class="jumbotron" style="padding-bottom:0px;">
+                <h2>Create Post</h2>
+            </div>
             <fieldset>
- 
-                <!-- Form Name -->
-                <legend>Create Post</legend>
- 
                 <!-- Text input-->
                 <div class="form-group">
                     <label class="col-md-4 control-label" for="txtTitle">Title</label>
@@ -43,13 +31,5 @@
  
             </fieldset>
         </form>
- 
- 
-    </div>
-    <!-- /.container -->
- 
-    <div class="blog-footer">
-        <p>Blogtastic</p>
- 
     </div>
 </div>

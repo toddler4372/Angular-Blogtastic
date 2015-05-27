@@ -9,7 +9,7 @@ angular.module('myApp.addPost', ['ngRoute'])
     });
 }])
  
-.controller('AddPostCtrl', ['$scope', '$firebase', 'CommonProp', function($scope, $firebase, CommonProp) {
+.controller('AddPostCtrl', ['$scope', '$firebase', 'CommonProp', '$location', function($scope, $firebase, CommonProp, $location) {
  	$scope.AddPost = function() {
  		var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles");
 		var fb = $firebase(firebaseObj);
@@ -27,3 +27,6 @@ angular.module('myApp.addPost', ['ngRoute'])
 				});
  		}
 }]);
+
+
+
