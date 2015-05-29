@@ -24,9 +24,10 @@
   <link href="styles/bootstrap.min.css" rel="stylesheet">
   <link href="styles/signin.css" rel="stylesheet">
   <!-- endbuild -->
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
+
+
 
   <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -42,6 +43,9 @@
         </div>
   </div>
   <div ng-view></div>
+
+  <div class="container" ng-include="'huff-news/huff-news.html'"></div>
+
   <div class="blog-footer">
       <p>Blogtastic</p>
   </div>
@@ -78,6 +82,7 @@
           <script src="register/register.js"></script>
           <script src="welcome/welcome.js"></script>
           <script src="addPost/addPost.js"></script>
+          <script src="huff-news/huff-news.js"></script>
           <script src="components/version/version.js"></script>
           <script src="components/version/version-directive.js"></script>
           <script src="components/version/interpolate-filter.js"></script>
@@ -88,5 +93,6 @@
           <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
           <script src="https://code.jquery.com/jquery-2.0.1.min.js"></script>
           <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
 </body>
 </html>

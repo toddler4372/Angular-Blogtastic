@@ -5,7 +5,8 @@ angular.module('myApp', [
     'myApp.home',       // Home module
     'myApp.register',	// Register route
     'myApp.welcome',	// Welcome page
-    'myApp.addPost'		// Blog post page
+    'myApp.addPost',	// Blog post page
+    'myApp.feedModule'
 ]).
 config(['$routeProvider', function($routeProvider) {
      
@@ -202,6 +203,36 @@ angular.module('myApp.addPost', ['ngRoute'])
 
 
 
+var feeds = [];
+    
+angular.module('myApp.feedModule', ['ngResource'])
+    .factory('FeedLoader', ["$resource", function ($resource) {
+        return $resource('https://ajax.googleapis.com/ajax/services/feed/load', {}, {
+            fetch: { method: 'JSONP', params: {v: '1.0', callback: 'JSON_CALLBACK'} }
+        });
+    }])
+    .service('FeedList', ["$rootScope", "FeedLoader", function ($rootScope, FeedLoader) {
+        this.get = function() {
+            var feedSources = [
+                {title: 'Smashing Magazine', url: 'https://itunes.apple.com/us/rss/topaudiobooks/limit=10/xml'}
+            ];
+            if (feeds.length === 0) {
+                for (var i=0; i<feedSources.length; i++) {
+                    FeedLoader.fetch({q: feedSources[i].url, num: 10}, {}, function (data) {
+                        var feed = data.responseData.feed;
+                        feeds.push(feed);
+                    });
+                }
+            }
+            return feeds;
+        };
+    }])
+    .controller('FeedCtrl', ["$scope", "FeedList", function ($scope, FeedList) {
+        $scope.feeds = FeedList.get();
+        $scope.$on('FeedList', function (event, data) {
+            $scope.feeds = data;
+        });
+    }]);
 'use strict';
 
 angular.module('myApp.version', [

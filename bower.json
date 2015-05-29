@@ -15,8 +15,7 @@
     "angular-route": "1.2.x",
     "angularfire": "0.8.2",
     "semantic-ui": "*",
-    "angular-mocks": "~1.2.x",
-    "html5-boilerplate": "~4.3.0"
+    "angular-mocks": "~1.2.x"
   },
   "devDependencies": {
     "angular-mocks": "1.2.x",
