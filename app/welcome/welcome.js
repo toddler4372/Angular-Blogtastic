@@ -11,7 +11,7 @@ angular.module('myApp.welcome', ['ngRoute'])
 
 .controller('WelcomeCtrl', ['$scope', '$firebase', 'CommonProp', function($scope, $firebase, CommonProp) {
     $scope.username = CommonProp.getUser();
-    var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles/");
+    var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles");
 
 
     var sync = $firebase(firebaseObj);
@@ -19,7 +19,7 @@ angular.module('myApp.welcome', ['ngRoute'])
     $scope.articles = sync.$asArray();
     $scope.editPost = function(id) {
         console.log(id);
-        var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles//" + id);
+        var firebaseObj = new Firebase("https://blogtastic.firebaseio.com/Articles/" + id);
 
 
         var syn = $firebase(firebaseObj);
@@ -30,7 +30,7 @@ angular.module('myApp.welcome', ['ngRoute'])
 
     $scope.update = function() {
         console.log($scope.postToUpdate.$id);
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + $scope.postToUpdate.$id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + $scope.postToUpdate.$id);
         var article = $firebase(fb);
         article.$update({
             title: $scope.postToUpdate.title,
@@ -47,14 +47,14 @@ angular.module('myApp.welcome', ['ngRoute'])
 
 
     $scope.confirmDelete = function(id) {
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + id);
         var article = $firebase(fb);
         $scope.postToDelete = article.$asObject();
         $('#deleteModal').modal();
     }
 
     $scope.deletePost = function() {
-        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles//" + $scope.postToDelete.$id);
+        var fb = new Firebase("https://blogtastic.firebaseio.com/Articles/" + $scope.postToDelete.$id);
         var article = $firebase(fb);
         article.$remove().then(function(ref) {
             $('#deleteModal').modal('hide');

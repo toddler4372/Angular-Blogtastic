@@ -9,13 +9,21 @@
   <title>Blogtastic</title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+  <!-- build:css(app) styles/vendor.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="bower_components/semantic-ui/dist/semantic.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+  <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
   <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
-  <link href="blog.css" rel="stylesheet">
-  <link href="justified-nav.css" rel="stylesheet">
-  <link rel="stylesheet" href="app.css">
+  <link href="styles/blog.css" rel="stylesheet">
+  <link href="styles/justified-nav.css" rel="stylesheet">
+  <link href="styles/app.css" rel="stylesheet">
+  <link href="styles/bootstrap.min.css" rel="stylesheet">
+  <link href="styles/signin.css" rel="stylesheet">
+  <!-- endbuild -->
   <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 <body>
@@ -28,7 +36,7 @@
             <nav class="blog-nav">
                 <a class="blog-nav-item active" href="#/welcome">Home</a>
                 <a class="blog-nav-item " href="#/addPost">Add Post</a>
-                <a class="blog-nav-item active" href="#/login">Login</a>
+                <a class="blog-nav-item" href="#/login">Login</a>
                 <a class="blog-nav-item " href="#/register">Register</a>
             </nav>
         </div>
@@ -41,20 +49,44 @@
   <!-- In production use:
   <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
   -->
+
+  <!-- build:js(app) scripts/vendor.js -->
+  <!-- bower:js -->
+  <script src="bower_components/jquery/dist/jquery.js"></script>
+  <script src="bower_components/es5-shim/es5-shim.js"></script>
   <script src="bower_components/angular/angular.js"></script>
+  <script src="bower_components/json3/lib/json3.js"></script>
+  <script src="bower_components/angular-resource/angular-resource.js"></script>
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+  <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+  <script src="bower_components/angular-animate/angular-animate.js"></script>
+  <script src="bower_components/angular-touch/angular-touch.js"></script>
+  <script src="bower_components/angular-loader/angular-loader.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="app.js"></script>
-  <script src="home/home.js"></script>
-  <script src="register/register.js"></script>
-  <script src="welcome/welcome.js"></script>
-  <script src="addPost/addPost.js"></script>
-  <script src="components/version/version.js"></script>
-  <script src="components/version/version-directive.js"></script>
-  <script src="components/version/interpolate-filter.js"></script>
-  <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
-  <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
-  <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
-  <script src="https://code.jquery.com/jquery-2.0.1.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+  <script src="bower_components/firebase/firebase.js"></script>
+  <script src="bower_components/firebase-simple-login/firebase-simple-login.js"></script>
+  <script src="bower_components/mockfirebase/dist/mockfirebase.js"></script>
+  <script src="bower_components/angularfire/dist/angularfire.min.js"></script>
+  <script src="bower_components/semantic-ui/dist/semantic.js"></script>
+  <script src="bower_components/angular-mocks/angular-mocks.js"></script>
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:js({.tmp,app}) scripts/scripts.js -->
+          <script src="app.js"></script>
+          <script src="home/home.js"></script>
+          <script src="register/register.js"></script>
+          <script src="welcome/welcome.js"></script>
+          <script src="addPost/addPost.js"></script>
+          <script src="components/version/version.js"></script>
+          <script src="components/version/version-directive.js"></script>
+          <script src="components/version/interpolate-filter.js"></script>
+  <!-- endbuild -->
+
+          <script src="https://cdn.firebase.com/js/client/1.0.18/firebase.js"></script>
+          <script src="https://cdn.firebase.com/js/client/2.0.4/firebase.js"></script>
+          <script src="https://cdn.firebase.com/libs/angularfire/0.9.0/angularfire.min.js"></script>
+          <script src="https://code.jquery.com/jquery-2.0.1.min.js"></script>
+          <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
