@@ -1,0 +1,1 @@
+The goal with this app was to integrate Grunt and Yeoman on top of a simple Angular app, integrate Semantic-UI as a pattern library to replace Bootstrap, and to build and deploy on Firebase.
