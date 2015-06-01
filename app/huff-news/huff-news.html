@@ -1,8 +1,24 @@
-<div ng-controller='FeedCtrl' class="container-fluid">
-        <div ng-repeat="feed in feeds | orderBy:'title'">
-          <h2><a href="{{feed.link}}" target="_blank">{{feed.title}}</a></h2>
-          <p><span ng-repeat="item in feed.entries">
-            <a href="{{item.link}}" target="_blank">{{item.title}}</a> (<span>{{item.publishedDate | date:'d-MM-yyyy HH:mm'}}</span>)<br />
-          </span></p>
-        </div>
+<div class="ui blue fluid card">
+<div class="ui items" ng-controller='FeedCtrl'>
+  <div class="item" ng-repeat="feed in feeds | orderBy:'title'">
+    
+
+    <div class="content" ng-repeat="item in feed.entries">
+    	<div class="article-link">
+		    <div class="ui tiny image" id="smashing-logo">
+		      <a href="{{feed.link}}" target="_blank"><img src="/images/smashing.png" id="smashing-logo"></a>
+		    </div>
+	      	<div class="header"><a href="{{item.link}}" target="_blank">{{item.title}}</a>
+		      <div class="meta">
+		        <span class="price">{{item.publishedDate | date:'d-MM-yyyy HH:mm'}}</span>
+		      </div>
+		    </div>
+  		</div>
+      <div class="ui horizontal divider"><i class="space shuttle icon"></i></div>
     </div>
+  </div>
+</div>
+</div>
+
+<br>
+<br>

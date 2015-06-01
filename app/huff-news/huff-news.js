@@ -9,7 +9,7 @@ angular.module('myApp.feedModule', ['ngResource'])
     .service('FeedList', function ($rootScope, FeedLoader) {
         this.get = function() {
             var feedSources = [
-                {title: 'Smashing Magazine', url: 'https://itunes.apple.com/us/rss/topaudiobooks/limit=10/xml'}
+                {title: 'Top Movies', url: 'https://feeds.feedburner.com/SmashingMagazine'}
             ];
             if (feeds.length === 0) {
                 for (var i=0; i<feedSources.length; i++) {

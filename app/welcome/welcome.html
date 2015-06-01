@@ -1,21 +1,42 @@
-<div ng-controller="WelcomeCtrl">
-    <div class="container">
-        <div class="page-header">
-            <h1>Blogtastic</h1>
+
+<br>
+<div class="ui one column padded grid" ng-controller="WelcomeCtrl">
+  <div class="column">
+    <div class="ui fluid blue card" ng-repeat="article in articles">
+        <div class="content">
+            <div class="header">{{article.title}}
+            <div class="extra content">
+                    <div class="right floated author">
+                      <img class="ui avatar image" src="/images/avatar/elliot.jpg"> Matt
+                    </div>
+                </div>
+            </div>
+            <div class="meta">toddler4372</div>
+                <div class="description">
+                    <p>{{article.post}}</p>
+                </div>
         </div>
-        <p class="lead">Welcome to Blogtastic, <b>{{username}}</b>!</p>
-        <div class="list-group" ng-repeat="article in articles">
-            <a href="#" onclick="return false;" class="list-group-item active">
-                <h4 class="list-group-item-heading">{{article.title}}</h4>
-                <p class="list-group-item-text">{{article.post}}</p>
-         
-                <span class="pull-right">
-              <button class="btn btn-xs btn-info" data-target="#editModal" ng-click="editPost(article.$id)">EDIT</button>
-              <button class="btn btn-xs btn-warning" ng-click="confirmDelete(article.$id)">DELETE</button>
-            </span>
-            </a>
+        <div class="2 fluid ui bottom attached basic buttons">
+            <div class="ui button" data-target="#editModal" ng-click="editPost(article.$id)"><i class="add icon"></i>
+            Edit</div>
+            <div class="ui button" ng-click="confirmDelete(article.$id)"><i class="add icon"></i>
+            Delete</div>
         </div>
     </div>
+</div>
+</div>
+
+<div class="ui one column padded grid" ng-controller="WelcomeCtrl">
+  <div class="column">  
+    <div ng-include="'huff-news/huff-news.html'"></div>
+    </div>
+</div>
+
+
+
+
+
+
     <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -58,5 +79,13 @@
         </div>
     </div>
 </div>
+
+
+
+
+
+
+
+
 
  
